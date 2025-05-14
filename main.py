@@ -5,4 +5,4 @@ app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "Equation Solver is online! Congratulations!!!!!!"}
+    return {"message": "Equation Solver is online! Congratulations!"}
