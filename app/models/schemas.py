@@ -1,8 +1,9 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Union, List
 
-class EquationInput(BaseModel):
-    equation: str
+class ExpressionInput(BaseModel):
+    expression: str
+    variable: str = "x"
 
-class EquationResult(BaseModel):
-    solutions: List[str]
+class ExpressionResult(BaseModel):
+    result: Union[str, List[str]]

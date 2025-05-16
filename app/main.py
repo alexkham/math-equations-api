@@ -1,10 +1,11 @@
 from fastapi import FastAPI
-from app.routers import basic
+from app.routers import equations ,system
 
-app = FastAPI(title="Equation Solver API")
+app = FastAPI(title="Math Expression API")
 
 @app.get("/")
 def root():
-    return {"message": "Equation Solver is online!Congratulations!Inside the app"}
+    return {"message": "Equation service is online!"}
 
-app.include_router(basic.router, prefix="/equations", tags=["Equation Solver"])
+app.include_router(equations.router, prefix="/equations", tags=["Equations"])
+app.include_router(system.router, prefix="/equations", tags=["Equation Systems"])
