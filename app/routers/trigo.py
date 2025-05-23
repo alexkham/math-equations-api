@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from app.models.trigo_schemas import TrigInput, TrigRewriteInput, TrigResult, TrigEvalResult
 from app.services import trigo
+from app.models.trigo_schemas import TrigCalcInput
+
 
 router = APIRouter(prefix="/trigo", tags=["trigonometry"])
 
@@ -33,5 +35,22 @@ def eval_trig_route(data: TrigInput):
     try:
         value = trigo.eval_trig_expr(data.expression)
         return {"value": value}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/derive", response_model=TrigResult)
+def derive_trig_route(data: TrigCalcInput):
+    try:
+        result, latex = trigo.derive_trig_expr(data.expression, data.variable)
+        return {"result": result, "latex": latex}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.post("/integrate", response_model=TrigResult)
+def integrate_trig_route(data: TrigCalcInput):
+    try:
+        result, latex = trigo.integrate_trig_expr(data.expression, data.variable)
+        return {"result": result, "latex": latex}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

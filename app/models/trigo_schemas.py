@@ -13,3 +13,8 @@ class TrigResult(BaseModel):
 
 class TrigEvalResult(BaseModel):
     value: float
+
+
+class TrigCalcInput(BaseModel):
+    expression: str = Field(..., description="Expression to differentiate or integrate")
+    variable: str = Field(default="x", description="Variable with respect to which to operate")

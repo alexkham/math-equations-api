@@ -1,5 +1,6 @@
 from sympy import symbols, sympify, simplify, trigsimp, expand_trig, latex
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations
+from sympy import diff, integrate, Symbol
 
 def simplify_trig(expression: str) -> tuple[str, str]:
     expr = parse_expr(expression, transformations=standard_transformations)
@@ -35,3 +36,18 @@ def rewrite_trig_expr(expression: str, target: str) -> tuple[str, str]:
 def eval_trig_expr(expression: str) -> float:
     expr = parse_expr(expression, transformations=standard_transformations)
     return float(expr.evalf())
+
+
+
+
+def derive_trig_expr(expression: str, variable: str) -> tuple[str, str]:
+    expr = parse_expr(expression, transformations=standard_transformations)
+    var = Symbol(variable)
+    derivative = diff(expr, var)
+    return str(derivative), f"$ {latex(derivative)} $"
+
+def integrate_trig_expr(expression: str, variable: str) -> tuple[str, str]:
+    expr = parse_expr(expression, transformations=standard_transformations)
+    var = Symbol(variable)
+    integral = integrate(expr, var)
+    return str(integral), f"$ {latex(integral)} $"
