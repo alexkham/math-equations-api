@@ -44,7 +44,7 @@ def divide_polys(dividend_str: str, divisor_str: str, var: str) -> Tuple[str, st
     return str(q.as_expr()), str(r.as_expr())
 
 
-from sympy import factor_list
+
 
 def factor_poly_steps(expr_str: str) -> Tuple[str, List[str]]:
     expr = parse_expr(expr_str)
