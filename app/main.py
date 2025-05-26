@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import equations ,system, logic ,trigo,polynomials, derivatives ,exponents ,roots
+from app.routers import equations ,system, logic ,trigo,polynomials, derivatives ,exponents ,roots ,latex_converter,logarithms
 
 app = FastAPI(title="Math Expression API")
 
@@ -15,3 +15,6 @@ app.include_router(polynomials.router)
 app.include_router(derivatives.router)
 app.include_router(exponents.router)
 app.include_router(roots.router)
+app.include_router(latex_converter.router)
+app.include_router(logarithms.router)
+
