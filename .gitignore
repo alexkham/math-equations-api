@@ -1,5 +1,18 @@
+# Python virtual environment
 venv/
+equations-api-venv/
+
+# Python bytecode
 __pycache__/
-.env
-*.pyc
+*.py[cod]
 *.pyo
+
+# Environment variables
+.env
+
+# VSCode settings (optional)
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
